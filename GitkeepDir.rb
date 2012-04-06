@@ -12,24 +12,23 @@ def green(text)
 end
 
 class String
-  def liste_rep()
+  def liste_rep(path = "")
     
     liste_exclus = [".", "..", ".git"]
     dir = Dir.open(self)
     liste_dir = dir.sort - liste_exclus
+
+    if (liste_dir.size == 0)
+      puts path + "/.gitkeep  " + green('Added')
+      fd = File.new(path + "/.gitkeep", "w+")
+      fd.close
+    end
     
     liste_dir.each { |fichier|
       path = self + fichier
-
       case File.ftype(path)
       when "directory"
-        vide = %x(ls "#{path}/")
-
-        if (vide == "")
-          puts self + fichier + "/.gitkeep  " + green('Added')
-          fd = File.new(self + fichier + "/.gitkeep", "w+")
-          fd.close
-        end
+        (path + "/").liste_rep(path)
       end
     }
   end
