@@ -43,5 +43,14 @@ class String
   end
 end
 
-"./".liste_rep()
+
+if (ARGV.size == 0)
+  "./".liste_rep()
+else
+  ARGV.each do|arg|
+    "./".liste_rep(arg)
+  end
+end
+
+
   
