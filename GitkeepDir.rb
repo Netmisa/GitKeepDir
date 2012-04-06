@@ -11,6 +11,7 @@ def green(text)
   colorize(text, 32)
 end
 
+
 class String
   def liste_rep(path = "")
     
@@ -23,12 +24,20 @@ class String
       fd = File.new(path + "/.gitkeep", "w+")
       fd.close
     end
-    
+
+    if (liste_dir.size > 1 && liste_dir.index(".gitkeep") != nil)
+      puts path + "/.gitkeep  " + red('Removed')
+      File.delete(path + "/.gitkeep")
+    end
+
     liste_dir.each { |fichier|
       path = self + fichier
-      case File.ftype(path)
-      when "directory"
-        (path + "/").liste_rep(path)
+
+      if (fichier != ".gitkeep")
+        case File.ftype(path)
+        when "directory"
+          (path + "/").liste_rep(path)
+        end
       end
     }
   end
