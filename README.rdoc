@@ -1,0 +1,28 @@
+== Welcome to GitKeepDir
+
+Git cannot add a completely empty directory. People who want to track empty directories in Git have created the convention of putting files called “.gitkeep” in these directories. This ruby script will automatically add .gitkeep files to empty directories, and remove .gitkeep files from directories with files or folders in them.
+
+== Getting Started
+
+=== Option 1
+
+1. Move GitKeepDir.rb to the root of your repository.
+
+2. $ cd to your repository directory.
+
+3. Run in the terminal:
+  
+  $ ./GitkeepDir.rb
+
+=== Option 2
+
+1. Drag GitKeepDir.rb to the terminal.
+
+2. Drag repository directories after GitKeepDir.rb to process. Example:
+
+  $ ~/Desktop/GitkeepDir.rb ~/projects/myapp ~/projects/myotherapp
+
+
+== Copyright
+
+Remyabi 2012
